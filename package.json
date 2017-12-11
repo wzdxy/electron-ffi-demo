@@ -1,0 +1,30 @@
+{
+  "name": "electron-ffi-demo",
+  "version": "1.0.0",
+  "description": "call a dll with ffi",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "build --win --x64",
+    "rebuild-fii": "cd .\\node_modules\\ffi\\ && node-gyp rebuild --target=1.8.1 --arch=x64 --target_arch=x64 --dist-url=https://atom.io/download/electron && cd ..\\ref && node-gyp rebuild --target=1.8.1 --arch=x64 --target_arch=x64 --dist-url=https://atom.io/download/electron "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "build": {
+    "directories": {
+      "output": "./elect_builder_output"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "ico.ico"
+    },
+    "extraFiles": [
+      "dll"
+    ]
+  },
+  "dependencies": {
+    "ffi": "^2.2.0"
+  }
+}
