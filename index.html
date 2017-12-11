@@ -6,17 +6,21 @@
   <title>Hello World!</title>
 </head>
 
-<body>  
+<body>
   <h3>C++ Dll hello:
     <span id="hello"></span>
   </h3>
   <h3>C++ Function Plus:</h3>
   <div id='plus'>
-    <input type="text" value="1">+<input type="text" value="2">=<input type="text">
+    <input type="text" value="1">+
+    <input type="text" value="2">=
+    <input type="text">
     <button type="button" onclick="plus()">计算</button>
   </div>
-  
-  <h3>C++ Function strlen() : <span id="str-length"></span><br>
+
+  <h3>C++ Function strlen() :
+    <span id="str-length"></span>
+    <br>
     <textarea id="str-input" cols="30" rows="10" onchange="strlen(this)" oninput="strlen(this)"></textarea>
   </h3>
 
@@ -33,27 +37,27 @@
         // Create funtions
         window.Dll = ffi.Library('dll/MyDLL.dll', {
           'Add': ['float', ['float', 'float']],
-          'Hello': ['string',[]],
-          'StrLength': ['int',['string']]
+          'Hello': ['string', []],
+          'StrLength': ['int', ['string']]
         })
         // Call C++ function Hello
-        document.getElementById('hello').innerHTML=Dll.Hello()
+        document.getElementById('hello').innerHTML = Dll.Hello()
       } catch (error) {
         console.error('ffi.Library', error);
       }
     }
-    function plus(){
-      let inputs=document.getElementById('plus').getElementsByTagName('input');
-      let a=Number(inputs[1].value), b=Number(inputs[0].value);
+    function plus() {
+      let inputs = document.getElementById('plus').getElementsByTagName('input');
+      let a = Number(inputs[1].value), b = Number(inputs[0].value);
       // Call C++ function Add
-      let sum=Dll.Add(a,b);
+      let sum = Dll.Add(a, b);
       console.log(`${a}+${b}=${sum}`);
-      inputs[2].value=sum;
+      inputs[2].value = sum;      
     }
 
-    function strlen(el){
+    function strlen(el) {
       // Call C++ function StrLength
-      document.getElementById('str-length').innerHTML=Dll.StrLength(el.value);
+      document.getElementById('str-length').innerHTML = Dll.StrLength(el.value);
     }
 
   </script>

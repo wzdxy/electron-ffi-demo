@@ -1,12 +1,34 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu,Notification} = require('electron')
 const path = require('path')
 const url = require('url')
 
 // 保持一个对于 window 对象的全局引用，如果你不这样做，
 // 当 JavaScript 对象被垃圾回收， window 会被自动地关闭
-let win
+let win,win2
 
 function createWindow () {
+  const template = [
+    {
+      role: 'window',
+      submenu: [
+        {role: 'minimize'},
+        {role: 'close'}
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click () { require('electron').shell.openExternal('https://electron.atom.io') }
+        }
+      ]
+    }
+  ]
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+
+
   // 创建浏览器窗口。
   win = new BrowserWindow({width: 800, height: 600})
 
@@ -19,7 +41,41 @@ function createWindow () {
 
   // 打开开发者工具。
   win.webContents.openDevTools();
+  
+  // 显示通知
+  // try {
+  //   console.log('isSupported()',Notification.isSupported())
+  //   let n=new Notification({
+  //     title:'title',subtitle:'subtitle',body:'body'
+  //   });
+  //   n.on('show',(e)=>console.log('show',e))
+  //   n.show();
+  // } catch (error) {
+  //   console.log(error)
+  // }
 
+
+
+  // 任务栏进度条, 完成后闪烁
+  let bar=0.01
+  let interval=setInterval(()=>{
+    if(bar>=1){
+      clearInterval(interval)
+      win.setProgressBar(0)
+      win.once('focus', () => win.flashFrame(false))  // 闪烁
+      win.flashFrame(true)
+      let n=new Notification({
+        title:'title',subtitle:'subtitle',body:'body'
+      });
+      n.on('show',(e)=>{
+        console.log('show',e)
+      })
+      n.show();
+    }else{
+      win.setProgressBar(bar+=0.02)
+    }          
+  },100)
+  
 
   // 当 window 被关闭，这个事件会被触发。
   win.on('closed', () => {

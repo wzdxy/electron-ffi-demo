@@ -1,9 +1,8 @@
 ## Quick Start
 
 ```bash
-# Need electron 1.8.1 , if not
-# You can run npm i electron
-# Or change the target version in rebuild-ffi script package.json to your electron version
+# If your electron version is not v1.8.1 ,
+# Change the target version in rebuild-ffi script package.json to your electron version before rebuild-ffi
 npm i
 npm run rebuild-ffi
 electron .
