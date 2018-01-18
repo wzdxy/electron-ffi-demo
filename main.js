@@ -40,42 +40,7 @@ function createWindow () {
   }))
 
   // 打开开发者工具。
-  win.webContents.openDevTools();
-  
-  // 显示通知
-  // try {
-  //   console.log('isSupported()',Notification.isSupported())
-  //   let n=new Notification({
-  //     title:'title',subtitle:'subtitle',body:'body'
-  //   });
-  //   n.on('show',(e)=>console.log('show',e))
-  //   n.show();
-  // } catch (error) {
-  //   console.log(error)
-  // }
-
-
-
-  // 任务栏进度条, 完成后闪烁
-  let bar=0.01
-  let interval=setInterval(()=>{
-    if(bar>=1){
-      clearInterval(interval)
-      win.setProgressBar(0)
-      win.once('focus', () => win.flashFrame(false))  // 闪烁
-      win.flashFrame(true)
-      let n=new Notification({
-        title:'title',subtitle:'subtitle',body:'body'
-      });
-      n.on('show',(e)=>{
-        console.log('show',e)
-      })
-      n.show();
-    }else{
-      win.setProgressBar(bar+=0.02)
-    }          
-  },100)
-  
+  win.webContents.openDevTools();  
 
   // 当 window 被关闭，这个事件会被触发。
   win.on('closed', () => {

@@ -1,8 +1,6 @@
 ## Quick Start
 
 ```bash
-# If your electron version is not v1.8.1 ,
-# Change the target version in rebuild-ffi script package.json to your electron version before rebuild-ffi
 npm i
 npm run rebuild-ffi
 npm run start
@@ -17,6 +15,10 @@ npm run start
             "dll"               // Where *.dll File
         ]
     ```
+## ScreenShot
+
+![image](http://odovakhft.bkt.clouddn.com/electron-ffi-demo.png)
+[http://odovakhft.bkt.clouddn.com/electron-ffi-demo.png](http://odovakhft.bkt.clouddn.com/electron-ffi-demo.png)
 
 ## `MyDLL.dll` Source Code
 
@@ -29,7 +31,7 @@ npm run start
 using namespace std;
 float Add(float plus1, float plus2)
 {
-	int add_result = plus1 + plus2;
+	float add_result = plus1 + plus2;
 	return add_result;
 }
 

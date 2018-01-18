@@ -4,14 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello World!</title>
+  <style>
+    #hello,#str-length{
+      color: #ff0000;
+    }
+    #plus>input{
+        width: 150px;
+    }
+  </style>
 </head>
 
 <body>
   <h3>C++ Dll hello:
     <span id="hello"></span>
   </h3>
-  <h3>C++ Function Plus:</h3>
+  
   <div id='plus'>
+    <h3 style="display:inline-block">C++ Function Plus:</h3>
     <input type="text" value="1">+
     <input type="text" value="2">=
     <input type="text">
@@ -19,9 +28,9 @@
   </div>
 
   <h3>C++ Function strlen() :
-    <span id="str-length"></span>
+    <span id="str-length">0</span>
     <br>
-    <textarea id="str-input" cols="30" rows="10" onchange="strlen(this)" oninput="strlen(this)"></textarea>
+    <textarea id="str-input" cols="30" rows="10" onchange="strlen(this)" oninput="strlen(this)" placeholder="Input something"></textarea>
   </h3>
 
   We are using node
@@ -40,6 +49,7 @@
           'Hello': ['string', []],
           'StrLength': ['int', ['string']]
         })
+        console.log('fii.Library result:',Dll);
         // Call C++ function Hello
         document.getElementById('hello').innerHTML = Dll.Hello()
       } catch (error) {
