@@ -5,7 +5,7 @@
 # Change the target version in rebuild-ffi script package.json to your electron version before rebuild-ffi
 npm i
 npm run rebuild-ffi
-electron .
+npm run start
 ```
 
 ## Build
