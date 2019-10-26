@@ -1,3 +1,7 @@
+## 简介
+目前使用的Node版本是 12, Electron 版本 6.0.10
+npm包为 node-ffi-napi@2.4.5, (最早使用Electron 1.7时用的是 ffi, 但 ffi 已停止支持最新版本的Node)
+
 ## Quick Start
 
 ```bash
@@ -83,7 +87,3 @@ Add @1
 - **MSBUILD : error MSB3428**: 未能加载 Visual C++ 组件“VCBuild.exe”。要解决此问题，1) 安装 .NET Framework 2.0 SDK；2) 安装 Microsoft Visual Stu
 dio 2005；或 3) 如果将该组件安装到了其他位置，请将其位置添加到系统路径中。 [D:\electron-ffi-demo\node_modules\ref\build\binding.sln]
 - `npm install --global windows-build-tools`
-
-
-- ffi.cc(111): **error C2039: “ForceSet”: 不是“v8::Object”的成员**
-- Node 10.x 兼容性问题, 应该使用 Node 8.x
