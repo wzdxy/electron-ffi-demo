@@ -5,29 +5,29 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/electron.cmd .",
-    "build": "build --win --x64",
-    "rebuild-ffi": "cd ./node_modules/ffi/ && node-gyp rebuild --target=1.7.11 --arch=x64 --target_arch=x64 --dist-url=https://atom.io/download/electron && cd ../ref && node-gyp rebuild --target=1.7.11 --arch=x64 --target_arch=x64 --dist-url=https://atom.io/download/electron "
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "wzdxy",
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^1.7.11"
-  },
   "build": {
-    "directories": {
-      "output": "./elect_builder_output"
-    },
     "win": {
-      "target": "portable",
-      "icon": "ico.ico"
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
     },
     "extraFiles": [
       "dll"
     ]
   },
+  "devDependencies": {
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0"
+  },
   "dependencies": {
-    "ffi": "^2.2.0"
+    "ffi-napi": "^2.4.5"
   }
 }

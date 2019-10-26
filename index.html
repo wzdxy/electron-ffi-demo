@@ -18,7 +18,7 @@
   <h3>C++ Dll hello:
     <span id="hello"></span>
   </h3>
-  
+
   <div id='plus'>
     <h3 style="display:inline-block">C++ Function Plus:</h3>
     <input type="text" value="1">+
@@ -42,7 +42,7 @@
     window.onload = function () {
       try {
         // Call *.dll with ffi
-        let ffi = require('ffi');
+        let ffi = require('ffi-napi');
         // Create funtions
         window.Dll = ffi.Library('dll/MyDLL.dll', {
           'Add': ['float', ['float', 'float']],
@@ -62,7 +62,7 @@
       // Call C++ function Add
       let sum = Dll.Add(a, b);
       console.log(`${a}+${b}=${sum}`);
-      inputs[2].value = sum;      
+      inputs[2].value = sum;
     }
 
     function strlen(el) {
