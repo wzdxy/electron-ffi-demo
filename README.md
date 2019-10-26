@@ -1,6 +1,6 @@
 ## 简介
 目前使用的Node版本是 12, Electron 版本 6.0.10
-npm包为 node-ffi-napi@2.4.5, (最早使用Electron 1.7时用的是 ffi, 但 ffi 已停止支持最新版本的Node)
+npm包为 ffi-napi@2.4.5, (最早使用Electron 1.7时用的是 ffi, 但 ffi 已停止支持最新版本的Node)
 
 ## Quick Start
 
